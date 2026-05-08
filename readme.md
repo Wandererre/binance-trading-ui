@@ -8,7 +8,7 @@ This is a simplified Python command-line application that places orders on the B
 ```bash
 pip install -r requirements.txt
 ```
-3. Open CLI.py and replace YOUR_TESTNET_KEY and YOUR_TESTNET_SECRET with your actual Binance Testnet API credentials.
+3. Open CLI.py and replace YOUR_TESTNET_KEY and YOUR_SECRET_KEY with your actual Binance Testnet API credentials.
 
 ## How to Run Examples
 
