@@ -4,7 +4,7 @@ from binance.exceptions import BinanceAPIException
 
 class BinanceTestnetClient:
     def __init__(self, api_key, api_secret):
-        # Use the testnet base URL provided in the task [cite: 11]
+        # Use the testnet base URL provided in the task
         self.client = Client(api_key, api_secret, testnet=True)
         self.logger = logging.getLogger(__name__)
 
@@ -19,18 +19,18 @@ class BinanceTestnetClient:
             
             if order_type.upper() == 'LIMIT':
                 if not price:
-                    raise ValueError("Price is required for LIMIT orders.") [cite: 26]
+                    raise ValueError("Price is required for LIMIT orders.")
                 params['price'] = price
                 params['timeInForce'] = 'GTC'  # Good 'Til Canceled
 
-            # Placing a futures order [cite: 18]
-            self.logger.info(f"Sending {order_type} {side} request for {symbol}") [cite: 32]
+            # Placing a futures order
+            self.logger.info(f"Sending {order_type} {side} request for {symbol}")
             response = self.client.futures_create_order(**params)
             return response
 
         except BinanceAPIException as e:
-            self.logger.error(f"API Error: {e.message}") [cite: 32, 63]
+            self.logger.error(f"API Error: {e.message}")
             return {"error": e.message}
         except Exception as e:
-            self.logger.error(f"Unexpected Error: {str(e)}") [cite: 32]
+            self.logger.error(f"Unexpected Error: {str(e)}")
             return {"error": str(e)}
